@@ -258,9 +258,9 @@
             // 
             this.StatusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Info});
-            this.StatusBar.Location = new System.Drawing.Point(0, 437);
+            this.StatusBar.Location = new System.Drawing.Point(0, 567);
             this.StatusBar.Name = "StatusBar";
-            this.StatusBar.Size = new System.Drawing.Size(292, 22);
+            this.StatusBar.Size = new System.Drawing.Size(832, 22);
             this.StatusBar.TabIndex = 18;
             this.StatusBar.Text = "Status";
             // 
@@ -278,7 +278,7 @@
             this.GroupGraph.Controls.Add(this.BoxGraph);
             this.GroupGraph.Location = new System.Drawing.Point(294, 12);
             this.GroupGraph.Name = "GroupGraph";
-            this.GroupGraph.Size = new System.Drawing.Size(0, 414);
+            this.GroupGraph.Size = new System.Drawing.Size(524, 544);
             this.GroupGraph.TabIndex = 19;
             this.GroupGraph.TabStop = false;
             this.GroupGraph.Text = "图像 (速率 - 时间曲线)";
@@ -292,7 +292,7 @@
             this.BoxGraph.InitialImage = null;
             this.BoxGraph.Location = new System.Drawing.Point(6, 20);
             this.BoxGraph.Name = "BoxGraph";
-            this.BoxGraph.Size = new System.Drawing.Size(0, 382);
+            this.BoxGraph.Size = new System.Drawing.Size(512, 512);
             this.BoxGraph.TabIndex = 0;
             this.BoxGraph.TabStop = false;
             // 
@@ -303,7 +303,7 @@
             this.GroupCode.Controls.Add(this.BoxCode);
             this.GroupCode.Location = new System.Drawing.Point(12, 196);
             this.GroupCode.Name = "GroupCode";
-            this.GroupCode.Size = new System.Drawing.Size(268, 230);
+            this.GroupCode.Size = new System.Drawing.Size(268, 360);
             this.GroupCode.TabIndex = 20;
             this.GroupCode.TabStop = false;
             this.GroupCode.Text = "代码";
@@ -318,7 +318,7 @@
             this.BoxCode.Name = "BoxCode";
             this.BoxCode.ReadOnly = true;
             this.BoxCode.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.BoxCode.Size = new System.Drawing.Size(256, 198);
+            this.BoxCode.Size = new System.Drawing.Size(256, 328);
             this.BoxCode.TabIndex = 8;
             // 
             // Main
@@ -326,7 +326,7 @@
             this.AcceptButton = this.BtnCalc;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(292, 459);
+            this.ClientSize = new System.Drawing.Size(832, 589);
             this.Controls.Add(this.GroupCode);
             this.Controls.Add(this.GroupGraph);
             this.Controls.Add(this.StatusBar);
