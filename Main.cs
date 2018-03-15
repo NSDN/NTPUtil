@@ -18,6 +18,7 @@ namespace NTPUtil
         private void Main_Load(object sender, EventArgs e)
         {
             g = Graphics.FromHwnd(BoxGraph.Handle);
+            Width = 308; Height = 498;
         }
 
         private void BtnClear_Click(object sender, EventArgs e)
