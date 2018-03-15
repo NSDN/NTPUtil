@@ -23,7 +23,7 @@ namespace NTPUtil
         private void BtnClear_Click(object sender, EventArgs e)
         {
             BoxV.Clear(); BoxP.Clear(); BoxR.Clear();
-            BoxLim.Clear(); BoxDist.Clear();
+            BoxLim.Clear(); BoxDist.Clear(); BoxCode.Clear();
         }
 
         private bool Parse(TextBox box, out double value)
@@ -125,6 +125,23 @@ namespace NTPUtil
                 Calc(() => packet.Velocity > lim, packet, lim, high);
             }
 
+            ShowCode(p, r, lim);
+        }
+
+        private void ShowCode(int p, int r, double lim)
+        {
+            BoxCode.Text = "rem ==== 基础设置 ====" + "\r\n" +
+                           "\r\n" + 
+                           "pwr " + p.ToString() + "\r\n" +
+                           "brk " + (10 - r).ToString() + "\r\n" +
+                           "vel " + lim.ToString("#.#") + "\r\n" +
+                           "\r\n" +
+                           "rem ==== 额外设置 ====" + "\r\n" +
+                           "\r\n" +
+                           "rem 非机车出站添加以下行" + "\r\n" +
+                           "ste 1" + "\r\n" +
+                           "rem 非机车进站添加以下行" + "\r\n" +
+                           "ste 0" + "\r\n";
         }
     }
 }
