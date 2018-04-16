@@ -54,6 +54,7 @@
             this.BoxGraph = new System.Windows.Forms.PictureBox();
             this.GroupCode = new System.Windows.Forms.GroupBox();
             this.BoxCode = new System.Windows.Forms.TextBox();
+            this.BoxUnlock = new System.Windows.Forms.CheckBox();
             this.GroupMain.SuspendLayout();
             this.StatusBar.SuspendLayout();
             this.GroupGraph.SuspendLayout();
@@ -63,6 +64,7 @@
             // 
             // GroupMain
             // 
+            this.GroupMain.Controls.Add(this.BoxUnlock);
             this.GroupMain.Controls.Add(this.BoxHigh);
             this.GroupMain.Controls.Add(this.BtnClear);
             this.GroupMain.Controls.Add(this.BtnCalc);
@@ -83,7 +85,7 @@
             this.GroupMain.Controls.Add(this.BoxV);
             this.GroupMain.Location = new System.Drawing.Point(12, 12);
             this.GroupMain.Name = "GroupMain";
-            this.GroupMain.Size = new System.Drawing.Size(268, 178);
+            this.GroupMain.Size = new System.Drawing.Size(268, 202);
             this.GroupMain.TabIndex = 17;
             this.GroupMain.TabStop = false;
             this.GroupMain.Text = "数据";
@@ -91,16 +93,17 @@
             // BoxHigh
             // 
             this.BoxHigh.AutoSize = true;
-            this.BoxHigh.Location = new System.Drawing.Point(8, 153);
+            this.BoxHigh.Location = new System.Drawing.Point(8, 175);
             this.BoxHigh.Name = "BoxHigh";
             this.BoxHigh.Size = new System.Drawing.Size(72, 16);
             this.BoxHigh.TabIndex = 5;
             this.BoxHigh.Text = "高速模式";
             this.BoxHigh.UseVisualStyleBackColor = true;
+            this.BoxHigh.CheckedChanged += new System.EventHandler(this.BoxHigh_CheckedChanged);
             // 
             // BtnClear
             // 
-            this.BtnClear.Location = new System.Drawing.Point(106, 149);
+            this.BtnClear.Location = new System.Drawing.Point(106, 171);
             this.BtnClear.Name = "BtnClear";
             this.BtnClear.Size = new System.Drawing.Size(75, 23);
             this.BtnClear.TabIndex = 6;
@@ -110,7 +113,7 @@
             // 
             // BtnCalc
             // 
-            this.BtnCalc.Location = new System.Drawing.Point(187, 149);
+            this.BtnCalc.Location = new System.Drawing.Point(187, 171);
             this.BtnCalc.Name = "BtnCalc";
             this.BtnCalc.Size = new System.Drawing.Size(75, 23);
             this.BtnCalc.TabIndex = 7;
@@ -301,9 +304,9 @@
             this.GroupCode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.GroupCode.Controls.Add(this.BoxCode);
-            this.GroupCode.Location = new System.Drawing.Point(12, 196);
+            this.GroupCode.Location = new System.Drawing.Point(12, 220);
             this.GroupCode.Name = "GroupCode";
-            this.GroupCode.Size = new System.Drawing.Size(268, 360);
+            this.GroupCode.Size = new System.Drawing.Size(268, 336);
             this.GroupCode.TabIndex = 20;
             this.GroupCode.TabStop = false;
             this.GroupCode.Text = "代码";
@@ -318,8 +321,19 @@
             this.BoxCode.Name = "BoxCode";
             this.BoxCode.ReadOnly = true;
             this.BoxCode.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.BoxCode.Size = new System.Drawing.Size(256, 328);
+            this.BoxCode.Size = new System.Drawing.Size(256, 304);
             this.BoxCode.TabIndex = 8;
+            // 
+            // BoxUnlock
+            // 
+            this.BoxUnlock.AutoSize = true;
+            this.BoxUnlock.Enabled = false;
+            this.BoxUnlock.Location = new System.Drawing.Point(8, 153);
+            this.BoxUnlock.Name = "BoxUnlock";
+            this.BoxUnlock.Size = new System.Drawing.Size(96, 16);
+            this.BoxUnlock.TabIndex = 9;
+            this.BoxUnlock.Text = "试验速度解锁";
+            this.BoxUnlock.UseVisualStyleBackColor = true;
             // 
             // Main
             // 
@@ -377,6 +391,7 @@
         private System.Windows.Forms.CheckBox BoxHigh;
         private System.Windows.Forms.GroupBox GroupCode;
         private System.Windows.Forms.TextBox BoxCode;
+        private System.Windows.Forms.CheckBox BoxUnlock;
     }
 }
 

@@ -43,7 +43,7 @@ namespace NTPUtil
 
             if (packet.R > 1)
             {
-                double MaxP = 20.0;
+                double MaxP = 40.0;
                 double OutP = MaxP / Math.Pow(20.0, 2.0) * Math.Pow((double)packet.P, 2.0);
                 packet.nextVelocity = Dynamics.LocoMotions.CalcVelocityUpWithAir(Math.Abs(packet.Velocity), 0.1, 1.0, OutP, DT);
 
@@ -58,6 +58,38 @@ namespace NTPUtil
                 packet.Velocity = Dynamics.LocoMotions.CalcVelocityDownWithAir(Math.Abs(packet.Velocity), 0.1, 1.0, 1.0, 1.0, packet.R / 10.0, DT);
                 if (packet.Velocity < 0.005) packet.Velocity = 0;
             }
+
+            if (packet.Velocity > 6.0) packet.Velocity = 6.0; 
+
+        }
+
+        public static void DoMotionWithAirHighEx(TrainPacket packet)
+        {
+
+            if (packet.P > 0 && packet.Velocity < 0.005)
+            {
+                packet.Velocity = 0.005;
+            }
+
+            if (packet.R > 1)
+            {
+                double MaxP = 80.0;
+                double OutP = MaxP / Math.Pow(20.0, 2.0) * Math.Pow((double)packet.P, 2.0);
+                packet.nextVelocity = Dynamics.LocoMotions.CalcVelocityUpWithAir(Math.Abs(packet.Velocity), 0.1, 1.0, OutP, DT);
+
+                if (packet.Velocity < packet.nextVelocity)
+                {
+                    packet.Velocity = packet.nextVelocity;
+                }
+            }
+
+            if (packet.R < 10)
+            {
+                packet.Velocity = Dynamics.LocoMotions.CalcVelocityDownWithAir(Math.Abs(packet.Velocity), 0.1, 1.0, 1.0, 1.0, packet.R / 10.0, DT);
+                if (packet.Velocity < 0.005) packet.Velocity = 0;
+            }
+
+            if (packet.Velocity > 8.0) packet.Velocity = 8.0;
 
         }
 
