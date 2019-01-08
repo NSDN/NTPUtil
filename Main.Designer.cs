@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.GroupMain = new System.Windows.Forms.GroupBox();
+            this.BoxUnlock = new System.Windows.Forms.CheckBox();
             this.BoxHigh = new System.Windows.Forms.CheckBox();
             this.BtnClear = new System.Windows.Forms.Button();
             this.BtnCalc = new System.Windows.Forms.Button();
@@ -54,7 +55,6 @@
             this.BoxGraph = new System.Windows.Forms.PictureBox();
             this.GroupCode = new System.Windows.Forms.GroupBox();
             this.BoxCode = new System.Windows.Forms.TextBox();
-            this.BoxUnlock = new System.Windows.Forms.CheckBox();
             this.GroupMain.SuspendLayout();
             this.StatusBar.SuspendLayout();
             this.GroupGraph.SuspendLayout();
@@ -89,6 +89,17 @@
             this.GroupMain.TabIndex = 17;
             this.GroupMain.TabStop = false;
             this.GroupMain.Text = "数据";
+            // 
+            // BoxUnlock
+            // 
+            this.BoxUnlock.AutoSize = true;
+            this.BoxUnlock.Enabled = false;
+            this.BoxUnlock.Location = new System.Drawing.Point(8, 153);
+            this.BoxUnlock.Name = "BoxUnlock";
+            this.BoxUnlock.Size = new System.Drawing.Size(96, 16);
+            this.BoxUnlock.TabIndex = 9;
+            this.BoxUnlock.Text = "试验速度解锁";
+            this.BoxUnlock.UseVisualStyleBackColor = true;
             // 
             // BoxHigh
             // 
@@ -324,17 +335,6 @@
             this.BoxCode.Size = new System.Drawing.Size(256, 304);
             this.BoxCode.TabIndex = 8;
             // 
-            // BoxUnlock
-            // 
-            this.BoxUnlock.AutoSize = true;
-            this.BoxUnlock.Enabled = false;
-            this.BoxUnlock.Location = new System.Drawing.Point(8, 153);
-            this.BoxUnlock.Name = "BoxUnlock";
-            this.BoxUnlock.Size = new System.Drawing.Size(96, 16);
-            this.BoxUnlock.TabIndex = 9;
-            this.BoxUnlock.Text = "试验速度解锁";
-            this.BoxUnlock.UseVisualStyleBackColor = true;
-            // 
             // Main
             // 
             this.AcceptButton = this.BtnCalc;
@@ -347,7 +347,7 @@
             this.Controls.Add(this.GroupMain);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(848, 628);
-            this.MinimumSize = new System.Drawing.Size(308, 262);
+            this.MinimumSize = new System.Drawing.Size(308, 400);
             this.Name = "Main";
             this.Text = "NTPUtil";
             this.Load += new System.EventHandler(this.Main_Load);

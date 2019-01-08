@@ -141,18 +141,18 @@ namespace NTPUtil
 
         private void ShowCode(int p, int r, double lim, bool high)
         {
-            BoxCode.Text = "rem ==== 基础设置 ====" + "\r\n" +
+            BoxCode.Text = "rem \"==== 基础设置 ====\"" + "\r\n" +
                            "\r\n" + 
                            "pwr " + p.ToString() + "\r\n" +
                            "brk " + (10 - r).ToString() + "\r\n" +
                            "vel " + lim.ToString("F1") + "\r\n" +
                            "high " + (high ? "1" : "0") + "\r\n" +
                            "\r\n" +
-                           "rem ==== 额外设置 ====" + "\r\n" +
+                           "rem \"==== 额外设置 ====\"" + "\r\n" +
                            "\r\n" +
-                           "rem 非机车出站添加以下行" + "\r\n" +
+                           "rem \"非机车出站添加以下行\"" + "\r\n" +
                            "ste 1" + "\r\n" +
-                           "rem 非机车进站添加以下行" + "\r\n" +
+                           "rem \"非机车进站添加以下行\"" + "\r\n" +
                            "ste 0" + "\r\n";
         }
 
