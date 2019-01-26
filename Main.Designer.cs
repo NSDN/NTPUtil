@@ -56,6 +56,7 @@
             this.BoxGraph = new System.Windows.Forms.PictureBox();
             this.GroupCode = new System.Windows.Forms.GroupBox();
             this.BoxCode = new System.Windows.Forms.TextBox();
+            this.BoxSlip = new System.Windows.Forms.CheckBox();
             this.GroupMain.SuspendLayout();
             this.StatusBar.SuspendLayout();
             this.GroupGraph.SuspendLayout();
@@ -65,6 +66,7 @@
             // 
             // GroupMain
             // 
+            this.GroupMain.Controls.Add(this.BoxSlip);
             this.GroupMain.Controls.Add(this.BoxEuler);
             this.GroupMain.Controls.Add(this.BoxUnlock);
             this.GroupMain.Controls.Add(this.BoxHigh);
@@ -95,12 +97,13 @@
             // BoxEuler
             // 
             this.BoxEuler.AutoSize = true;
-            this.BoxEuler.Location = new System.Drawing.Point(86, 175);
+            this.BoxEuler.Location = new System.Drawing.Point(109, 175);
             this.BoxEuler.Name = "BoxEuler";
             this.BoxEuler.Size = new System.Drawing.Size(72, 16);
             this.BoxEuler.TabIndex = 32;
             this.BoxEuler.Text = "欧拉方法";
             this.BoxEuler.UseVisualStyleBackColor = true;
+            this.BoxEuler.CheckedChanged += new System.EventHandler(this.BoxEuler_CheckedChanged);
             // 
             // BoxUnlock
             // 
@@ -347,6 +350,17 @@
             this.BoxCode.Size = new System.Drawing.Size(256, 304);
             this.BoxCode.TabIndex = 8;
             // 
+            // BoxSlip
+            // 
+            this.BoxSlip.AutoSize = true;
+            this.BoxSlip.Enabled = false;
+            this.BoxSlip.Location = new System.Drawing.Point(109, 153);
+            this.BoxSlip.Name = "BoxSlip";
+            this.BoxSlip.Size = new System.Drawing.Size(72, 16);
+            this.BoxSlip.TabIndex = 33;
+            this.BoxSlip.Text = "轮滑模型";
+            this.BoxSlip.UseVisualStyleBackColor = true;
+            // 
             // Main
             // 
             this.AcceptButton = this.BtnCalc;
@@ -405,6 +419,7 @@
         private System.Windows.Forms.TextBox BoxCode;
         private System.Windows.Forms.CheckBox BoxUnlock;
         private System.Windows.Forms.CheckBox BoxEuler;
+        private System.Windows.Forms.CheckBox BoxSlip;
     }
 }
 

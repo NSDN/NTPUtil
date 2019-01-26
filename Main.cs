@@ -32,6 +32,11 @@ namespace NTPUtil
             BoxUnlock.Enabled = BoxHigh.Checked;
         }
 
+        private void BoxEuler_CheckedChanged(object sender, EventArgs e)
+        {
+            BoxSlip.Enabled = BoxEuler.Checked;
+        }
+
         private bool Parse(TextBox box, out double value)
         {
             if (!double.TryParse(box.Text, out value))
@@ -61,7 +66,7 @@ namespace NTPUtil
             return max;
         }
 
-        private void Calc(State state, TrainPacket packet, double lim, bool high, bool unlock, bool euler)
+        private void Calc(State state, TrainPacket packet, double lim, bool high, bool unlock, bool euler, bool slip)
         {
             new Task(() =>
             {
@@ -74,12 +79,24 @@ namespace NTPUtil
                 {
                     if (euler)
                     {
-                        if (high)
+                        if (slip)
                         {
-                            if (unlock) TrainController.DoMotionWithEuler(packet, 8.0);
-                            else TrainController.DoMotionWithEuler(packet, 5.0);
+                            if (high)
+                            {
+                                if (unlock) TrainController.DoMotionWithSlip(packet, 8.0);
+                                else TrainController.DoMotionWithSlip(packet, 5.0);
+                            }
+                            else TrainController.DoMotionWithSlip(packet, 3.5);
                         }
-                        else TrainController.DoMotionWithEuler(packet, 3.5);
+                        else
+                        {
+                            if (high)
+                            {
+                                if (unlock) TrainController.DoMotionWithEuler(packet, 8.0);
+                                else TrainController.DoMotionWithEuler(packet, 5.0);
+                            }
+                            else TrainController.DoMotionWithEuler(packet, 3.5);
+                        }
                     }
                     else
                     {
@@ -133,6 +150,7 @@ namespace NTPUtil
             bool high = BoxHigh.Checked;
             bool unlock = BoxUnlock.Checked;
             bool euler = BoxEuler.Checked;
+            bool slip = BoxSlip.Checked;
 
             r = 10 - r; r = r < 1 ? 1 : (r > 10 ? 10 : r);
 
@@ -142,12 +160,12 @@ namespace NTPUtil
             if (v < lim)
             {
                 if (p == 0 || r == 1) return;
-                Calc(() => packet.Velocity < lim, packet, lim, high, unlock, euler);
+                Calc(() => packet.Velocity < lim, packet, lim, high, unlock, euler, slip);
             }
             else if (v > lim)
             {
                 if (r == 10) packet.R = 1;
-                Calc(() => packet.Velocity > lim, packet, lim, high, unlock, euler);
+                Calc(() => packet.Velocity > lim, packet, lim, high, unlock, euler, slip);
             }
 
             ShowCode(p, r, lim, high);
