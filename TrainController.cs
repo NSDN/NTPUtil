@@ -125,5 +125,21 @@ namespace NTPUtil
 
         }
 
+        public static void DoMotionWithEuler(TrainPacket packet, double maxV)
+        {
+            double minV = 0.02;
+            if (packet.P > 0 && packet.Velocity < minV)
+                packet.Velocity = minV;
+
+            double p = packet.P / 20.0, r = 1.0 - (packet.R - 1.0) / 9.0;
+            packet.nextVelocity = Dynamics.LocoMotions.CalcVelocityWithEuler(Math.Abs(packet.Velocity), p, r, maxV, 0.05);
+
+            if ((packet.R > 1 && packet.Velocity < packet.nextVelocity) || packet.R < 10)
+                packet.Velocity = packet.nextVelocity;
+
+            if (packet.Velocity < minV) packet.Velocity = 0;
+            if (packet.Velocity > maxV) packet.Velocity = maxV;
+        }
+
     }
 }

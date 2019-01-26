@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.GroupMain = new System.Windows.Forms.GroupBox();
+            this.BoxEuler = new System.Windows.Forms.CheckBox();
             this.BoxUnlock = new System.Windows.Forms.CheckBox();
             this.BoxHigh = new System.Windows.Forms.CheckBox();
             this.BtnClear = new System.Windows.Forms.Button();
@@ -64,6 +65,7 @@
             // 
             // GroupMain
             // 
+            this.GroupMain.Controls.Add(this.BoxEuler);
             this.GroupMain.Controls.Add(this.BoxUnlock);
             this.GroupMain.Controls.Add(this.BoxHigh);
             this.GroupMain.Controls.Add(this.BtnClear);
@@ -90,6 +92,16 @@
             this.GroupMain.TabStop = false;
             this.GroupMain.Text = "数据";
             // 
+            // BoxEuler
+            // 
+            this.BoxEuler.AutoSize = true;
+            this.BoxEuler.Location = new System.Drawing.Point(86, 175);
+            this.BoxEuler.Name = "BoxEuler";
+            this.BoxEuler.Size = new System.Drawing.Size(72, 16);
+            this.BoxEuler.TabIndex = 32;
+            this.BoxEuler.Text = "欧拉方法";
+            this.BoxEuler.UseVisualStyleBackColor = true;
+            // 
             // BoxUnlock
             // 
             this.BoxUnlock.AutoSize = true;
@@ -114,7 +126,7 @@
             // 
             // BtnClear
             // 
-            this.BtnClear.Location = new System.Drawing.Point(106, 171);
+            this.BtnClear.Location = new System.Drawing.Point(187, 146);
             this.BtnClear.Name = "BtnClear";
             this.BtnClear.Size = new System.Drawing.Size(75, 23);
             this.BtnClear.TabIndex = 6;
@@ -282,7 +294,7 @@
             // 
             this.Info.Name = "Info";
             this.Info.Size = new System.Drawing.Size(117, 17);
-            this.Info.Text = "NSDN-MC © 2018";
+            this.Info.Text = "NSDN-MC © 2019";
             // 
             // GroupGraph
             // 
@@ -392,6 +404,7 @@
         private System.Windows.Forms.GroupBox GroupCode;
         private System.Windows.Forms.TextBox BoxCode;
         private System.Windows.Forms.CheckBox BoxUnlock;
+        private System.Windows.Forms.CheckBox BoxEuler;
     }
 }
 

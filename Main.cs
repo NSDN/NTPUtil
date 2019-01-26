@@ -61,7 +61,7 @@ namespace NTPUtil
             return max;
         }
 
-        private void Calc(State state, TrainPacket packet, double lim, bool high, bool unlock)
+        private void Calc(State state, TrainPacket packet, double lim, bool high, bool unlock, bool euler)
         {
             new Task(() =>
             {
@@ -72,12 +72,25 @@ namespace NTPUtil
                 BtnClear.Invoke(new Action(() => BtnClear.Enabled = false));
                 while (state.Invoke())
                 {
-                    if (high)
+                    if (euler)
                     {
-                        if (unlock) TrainController.DoMotionWithAirHighEx(packet);
-                        else TrainController.DoMotionWithAirHigh(packet);
+                        if (high)
+                        {
+                            if (unlock) TrainController.DoMotionWithEuler(packet, 8.0);
+                            else TrainController.DoMotionWithEuler(packet, 5.0);
+                        }
+                        else TrainController.DoMotionWithEuler(packet, 3.5);
                     }
-                    else TrainController.DoMotionWithAir(packet);
+                    else
+                    {
+                        if (high)
+                        {
+                            if (unlock) TrainController.DoMotionWithAirHighEx(packet);
+                            else TrainController.DoMotionWithAirHigh(packet);
+                        }
+                        else TrainController.DoMotionWithAir(packet);
+                    }
+                    
                     dist += packet.Velocity; vels.Add(packet.Velocity);
                     if (dist > MAX)
                     {
@@ -119,6 +132,7 @@ namespace NTPUtil
             if (!Parse(BoxLim, out double lim)) return;
             bool high = BoxHigh.Checked;
             bool unlock = BoxUnlock.Checked;
+            bool euler = BoxEuler.Checked;
 
             r = 10 - r; r = r < 1 ? 1 : (r > 10 ? 10 : r);
 
@@ -128,12 +142,12 @@ namespace NTPUtil
             if (v < lim)
             {
                 if (p == 0 || r == 1) return;
-                Calc(() => packet.Velocity < lim, packet, lim, high, unlock);
+                Calc(() => packet.Velocity < lim, packet, lim, high, unlock, euler);
             }
             else if (v > lim)
             {
                 if (r == 10) packet.R = 1;
-                Calc(() => packet.Velocity > lim, packet, lim, high, unlock);
+                Calc(() => packet.Velocity > lim, packet, lim, high, unlock, euler);
             }
 
             ShowCode(p, r, lim, high);
